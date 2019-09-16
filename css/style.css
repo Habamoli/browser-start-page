@@ -1,142 +1,10 @@
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-    display: block;
-}
-
-body {
-    line-height: 1;
-}
-
-ol,
-ul {
-    list-style: none;
-}
-
-blockquote,
-q {
-    quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-    content: '';
-    content: none;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
 :root {
     --main-bg: #ffffff;
     --main-text: #000000;
-    --main-text-unselected: #DCDCDC	;
+    --main-text-unselected: #DCDCDC;
     --main-border: #cecece;
     --main-border-unselected: #E8E8E8;
-    --main-font: "Source Sans Pro", Helvetica, sans-serif;
+    --main-font: "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -147,7 +15,6 @@ body {
     line-height: 1.5em;
 }
 
-button,
 input,
 optgroup,
 select,
@@ -172,58 +39,20 @@ h3 {
     line-height: 2.5em;
 }
 
-.wrapper {
-    margin-top: 3em;
-    transition: all 0.2s ease-in-out;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: minmax(auto, auto);
-    grid-gap: 1em;
-    grid-template-areas: ". a a a a ." ". b b c c .";
-}
+li { display: inline-block; }
 
-.title h2,
-h4 {
-    margin: 10%;
-}
-
-.contentTopBar {
+.sticky {
+    position: sticky;
     top: 0;
-    position: fixed;
-    width: 70%;
-    margin-right: 15%;
-    margin-left: 15%;
-    background: var(--main-bg);
-    padding-top: 1em;
-    padding-bottom: 0.5em;
 }
 
-.flexContainer {
-    display: flex;
-    justify-content: center;
-}
+.flexbox { display: flex; }
+.flexbox-centered { justify-content: center; }
+.gridA { grid-area: a; }
+.gridB { grid-area: b; }
+.gridC { grid-area: c; }
 
-.flexContainer div {}
-
-.flexContainer input {
-    margin: 5px 10px 5px 10px;
-    width: 80%;
-    padding: 0.45em;
-}
-
-.column1 {
-    grid-area: b;
-}
-
-.column2 {
-    grid-area: c;
-}
-
-li {
-    display: inline-block;
-}
-
-li .button {
+.button {
     background-color: var(--main-bg);
     border: 1px solid var(--main-border);
     color: var(--main-text);
@@ -237,34 +66,56 @@ li .button {
     display: inline-block;
 }
 
+.wrapper {
+    display: grid;
+    transition: all 0.2s ease-in-out;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(auto, auto);
+    grid-gap: 1em;
+    grid-template-areas: ". a a a a ."". b b c c .";
+}
+
+.nav {
+    background: var(--main-bg);
+    padding: 0.25em 0 0.5em 0;
+}
+
+.nav input {
+    margin: 0.2em 0.2em 0.1em 0.2em;
+    width: 80%;
+    padding: 0.45em;
+}
+
 @media only screen and (max-width: 1500px) {
     .contentTopBar {
-        width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
+        margin: 0% 5% 0% 5%;
         padding-top: 0.4em;
     }
+
     .wrapper {
         grid-template-columns: repeat(10, 1fr);
-        grid-template-areas: ". a a a a a a a a ." ". b b b b c c c c .";
+        grid-template-areas: ". a a a a a a a a ."". b b b b c c c c .";
     }
 }
 
 @media only screen and (max-width: 500px) {
     .wrapper {
-        margin-top: 17em;
+        width: 100%;
         grid-template-columns: repeat(1, 1fr);
-        grid-template-areas: "a" "b" "c";
+        grid-template-areas: "a""b""c";
+        margin: 0em 2em 0em 1em;
     }
-    .flexContainer {
+
+    .nav {
+        margin: 0.2em 0.2em 0.1em 0.2em;
         flex-wrap: wrap;
+        display: block;
+        position: initial;
+
     }
-    :root {
-        --main-bg: #000000;
-        --main-text: #808080;
-        --main-border: #a9a9a9;
-    }
-    .button {
-        border: 0px;
+
+    .nav input {
+        width: 90%;
+        margin: 0.5em 0 0.5em 0;
     }
 }
