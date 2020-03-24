@@ -1,13 +1,18 @@
-// Filtering script
-function searchFunction() {
-    var input, filter, li, a, i, txtValue;
-    input = document.getElementById('filterInput');
-    filter = input.value.toUpperCase();
-    li = document.getElementsByTagName('li');
+const favIcon =
+    "iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAKElEQVRIiWNgGAXDHjAisf/TwmwmKhs6CgYhGE1Fo4ByMJqKRsEQAADWCQMKYvEFtQAAAABJRU5ErkJggg==";
+const docHead = document.getElementsByTagName("head")[0];
+const newLink = document.createElement("link");
+newLink.rel = "shortcut icon";
+newLink.href = "data:image/png;base64," + favIcon;
+docHead.appendChild(newLink);
+
+const searchFunction = () => {
+    const input = document.getElementById("filterInput");
+    const filter = input.value.toUpperCase();
+    const li = document.getElementsByTagName("li");
 
     for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
+        const a = li[i].getElementsByTagName("a")[0];
 
         if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
             a.style.color = "";
@@ -17,51 +22,39 @@ function searchFunction() {
             a.style.borderColor = "var(--main-border-unselected)";
         }
     }
-}
+};
 
+Mousetrap.bind("1", () => {
+    document.getElementById("filterInput").focus();
+    return false;
+});
 
-// Hotkeys
-Mousetrap.bind('1',
-    function () {
-        document.getElementById("filterInput").focus();
-        return false;
-    });
+Mousetrap.bind("2", () => {
+    document.getElementById("searchDDG").focus();
+    return false;
+});
 
-Mousetrap.bind('2',
-    function () {
-        document.getElementById("searchDDG").focus();
-        return false;
-    });
+Mousetrap.bind("3", () => {
+    document.getElementById("searchGoogleEn").focus();
+    return false;
+});
 
-Mousetrap.bind('3',
-    function () {
-        document.getElementById("searchGoogleEn").focus();
-        return false;
-    });
+Mousetrap.bind("4", () => {
+    document.getElementById("SearchGoogle").focus();
+    return false;
+});
 
-Mousetrap.bind('4',
-    function () {
-        document.getElementById("SearchGoogle").focus();
-        return false;
-    });
+Mousetrap.bind("5", () => {
+    document.getElementById("searchWikipedia").focus();
+    return false;
+});
 
-Mousetrap.bind('5',
-    function () {
+Mousetrap.bind("6", () => {
+    document.getElementById("searchHinta").focus();
+    return false;
+});
 
-        document.getElementById("searchWikipedia").focus();
-        return false;
-    });
-
-Mousetrap.bind('6',
-    function () {
-
-        document.getElementById("searchHinta").focus();
-        return false;
-    });
-
-Mousetrap.bind('7',
-    function () {
-
-        document.getElementById("searchYouTube").focus();
-        return false;
-    });
+Mousetrap.bind("7", () => {
+    document.getElementById("searchYouTube").focus();
+    return false;
+});

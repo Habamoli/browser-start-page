@@ -21,7 +21,7 @@ ___
 To add your own pages, just edit the `index.html` file and add your own links. For easy copy pasting, you can use the snippet below:
 
 ```
-<li><a class="button" href="UrlHere">NameHere</a></li>
+<a class="b" href="UrlHere">NameHere</a>
 ```
 
 ___
@@ -41,8 +41,8 @@ awk '{gsub("</DT>","");print}' | \
 awk '{gsub("<DL>","");print}' | \
 awk '{gsub("</DL>","");print}' | \
 awk '{gsub("<p>","");print}' | \
-awk '{gsub("<A","<li><a class=\"button\"");print}' | \
-awk '{gsub("</A>","</a></li>");print}' | \
+awk '{gsub("<A","<a class=\"button\"");print}' | \
+awk '{gsub("</A>","</a>");print}' | \
 sed 's/^[[:space:]]*//' | \
 awk NF > out.txt
 ```
