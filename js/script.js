@@ -1,5 +1,4 @@
-const favIcon =
-    "iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAKElEQVRIiWNgGAXDHjAisf/TwmwmKhs6CgYhGE1Fo4ByMJqKRsEQAADWCQMKYvEFtQAAAABJRU5ErkJggg==";
+const favIcon = "iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAKElEQVRIiWNgGAXDHjAisf/TwmwmKhs6CgYhGE1Fo4ByMJqKRsEQAADWCQMKYvEFtQAAAABJRU5ErkJggg==";
 const docHead = document.getElementsByTagName("head")[0];
 const newLink = document.createElement("link");
 newLink.rel = "shortcut icon";
@@ -9,17 +8,17 @@ docHead.appendChild(newLink);
 const searchFunction = () => {
     const input = document.getElementById("filterInput");
     const filter = input.value.toUpperCase();
-    const li = document.getElementsByTagName("li");
+    const links = document.getElementsByClassName("b");
 
-    for (i = 0; i < li.length; i++) {
-        const a = li[i].getElementsByTagName("a")[0];
+    for (i = 0; i < links.length; i++) {
+        const foundLinks = links[i];
 
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            a.style.color = "";
-            a.style.borderColor = "";
+        if (foundLinks.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            foundLinks.style.color = "";
+            foundLinks.style.borderColor = "";
         } else {
-            a.style.color = "var(--main-text-unselected)";
-            a.style.borderColor = "var(--main-border-unselected)";
+            foundLinks.style.color = "var(--main-text-unselected)";
+            foundLinks.style.borderColor = "var(--main-border-unselected)";
         }
     }
 };
